@@ -20,6 +20,7 @@
 import homes from "~/data/homes";
 
 export default {
+    layout: "red",
     head() {
         return {
             title: this.home.title

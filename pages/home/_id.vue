@@ -28,8 +28,8 @@ export default {
     mounted() {
       this.$maps.showMap(this.$refs.map, this.home._geoloc.lat, this.home._geoloc.lng)
     },
-    // `asyncData` is Nuxt feature for async Data
-    async asyncData({ params, $dataApi }) {
+    // `asyncData` is Nuxt feature for async Data, it's come with so many things
+    async asyncData({ params, $dataApi, error }) {
       const response = await $dataApi.getHome(params.id)
       if(!response.ok) return error({ statusCode: response.status, message: response.statusText });
       return {

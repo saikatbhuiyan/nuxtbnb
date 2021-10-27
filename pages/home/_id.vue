@@ -25,13 +25,15 @@
         <img :src="review.reviewer.image" /><br/>
         {{ review.reviewer.name }}<br/>
         {{ formatDate(review.date) }}<br/>
-        {{ review.comment }}<br/>
+        <short-text :text="review.comment" :target="150" /><br/>
     </div>
   </div>
 </template>
 
 <script>
+import ShortText from '../../components/ShortText.vue';
 export default {
+  components: { ShortText },
   head() {
     return {
       title: this.home.title,

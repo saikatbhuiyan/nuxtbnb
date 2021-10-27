@@ -1,6 +1,9 @@
 <template>
     <div>
-        <span>{{ displayText }}</span>
+        <span>{{ displayText }}
+            <button v-if="isTooLong && !isExpanded" @click="isExpanded = true" class="link">read more</button>
+            <button v-if="isTooLong && isExpanded" @click="isExpanded = false" class="link">read less</button>
+        </span>
     </div>
 </template>
 
@@ -45,3 +48,17 @@ export default {
 
 }
 </script>
+
+<style scoped>
+.link {
+    color: blue;
+    background-color: white;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.link:focus{
+    border: none;
+    outline: none;
+}
+</style>

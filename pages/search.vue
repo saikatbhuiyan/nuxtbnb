@@ -1,14 +1,19 @@
 <template>
     <div>
-        {{ lat }} / {{ lng }} /{{ label }} <br/>
-        <div v-for="home in homes" :key="home.objectID"><br/></div>
+        <div v-if="homes.length > 0">
+            <HomeRow v-for="home in homes" :key="home.objectID" :home="home"/>
+        </div>
+        <div v-else>No results found</div>
     </div>
 </template>
 
 <script>
 export default {
+    head(){
+        return `Homes arround ${this.label}`
+    },
     // watchQuery: ['lat'], //watchQuery is nuxt feature refresh data when 'lat' change
-    beforeRouteUpdate (to, from, next) {
+    async beforeRouteUpdate (to, from, next) {
         const data = await this.$dataApi.getHomeByLocation(to.query.lat, to.query.lng)
         this.homes = data.json.hits
         this.label = to.query.label

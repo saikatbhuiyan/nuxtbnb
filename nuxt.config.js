@@ -1,21 +1,30 @@
 export default {
-    components: true,
-    head: {
-        titleTemplate: "NuxtBnb: %s",
-        htmlAttrs: {
-            lang: "en"
-        },
-        bodyAttrs:{
-            class: ["my-style"]
-        },
-        meta: [{
-            charset: "utf-8",
-        }]
+  components: true,
+  head: {
+    titleTemplate: "NuxtBnb: %s",
+    htmlAttrs: {
+      lang: "en",
     },
-    router: {
-        prefetchLinks: false,
+    bodyAttrs: {
+      class: ["my-style"],
     },
-    plugins:[ '~/plugins/maps.client', '~/plugins/dataApi', ],
-    modules:[],
-    buildModules:['@nuxtjs/tailwindcss']
-}  
+    meta: [
+      {
+        charset: "utf-8",
+      },
+    ],
+  },
+  router: {
+    prefetchLinks: false,
+  },
+  plugins: ["~/plugins/maps.client", "~/plugins/dataApi"],
+  modules: [],
+  buildModules: ["@nuxtjs/tailwindcss"],
+  css: ["~/assets/sass/app.scss"],
+  build: {
+    extractCSS: true,
+    loaders: {
+      limit: 0, // stop inLine or stop base64 hash for image
+    },
+  },
+};

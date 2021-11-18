@@ -1,14 +1,6 @@
 <template>
-  <div>
-    <div style="display: flex">
-      <img
-        v-for="image in home.images"
-        :src="image"
-        :key="image"
-        width="250px"
-        height="150px"
-      />
-    </div>
+  <div class="app-container">
+    <property-gallery :images="home.images" />
     {{ home.title }} <br />
     <img src="/images/marker.svg" width="20" height="20" />{{
       home.location.address
@@ -66,11 +58,11 @@ export default {
         message: badResponse.statusText,
       });
 
-      return {
-        home: responses[0].json,
-        reviews: responses[1].json.hits,
-        user: responses[2].json.hits[0],
-      };
+    return {
+      home: responses[0].json,
+      reviews: responses[1].json.hits,
+      user: responses[2].json.hits[0],
+    };
 
     // const homeResponse = await $dataApi.getHome(params.id);
     // if (!homeResponse.ok)

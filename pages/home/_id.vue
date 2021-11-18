@@ -1,6 +1,8 @@
 <template>
   <div class="app-container">
     <property-gallery :images="home.images" />
+    <property-details :home="home" />
+
     {{ home.title }} <br />
     <img src="/images/marker.svg" width="20" height="20" />{{
       home.location.address

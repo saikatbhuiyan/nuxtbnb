@@ -4,6 +4,7 @@
     <property-details :home="home" />
     <property-description :home="home" />
     <property-map :home="home" />
+    <property-reviews :reviews="reviews" />
 
     {{ home.title }} <br />
     <img src="/images/marker.svg" width="20" height="20" />{{
@@ -33,8 +34,9 @@
 
 <script>
 import ShortText from "../../components/ShortText.vue";
+import PropertyReviews from "../../components/PropertyReviews.vue";
 export default {
-  components: { ShortText },
+  components: { ShortText, PropertyReviews },
   head() {
     return {
       title: this.home.title,

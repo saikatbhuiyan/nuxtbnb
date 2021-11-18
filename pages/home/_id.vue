@@ -6,49 +6,19 @@
     <property-map :home="home" />
     <property-reviews :reviews="reviews" />
     <property-host :user="user" />
-
-    {{ home.title }} <br />
-    <img src="/images/marker.svg" width="20" height="20" />{{
-      home.location.address
-    }}
-    {{ home.location.city }} {{ home.location.state }}<br />
-    <img src="/images/star.svg" width="20" height="20" />
-    {{ home.reviewValue }} <br />
-    {{ home.guests }} guests, {{ home.pricePerNight }} /
-    {{ home.bedrooms }} rooms, {{ home.beds }} beds,
-    {{ home.bathrooms }} bath<br />
-    {{ home.description }}
-    <div style="height: 800px; width: 800px" ref="map"></div>
-    <div v-for="review in reviews" :key="review.objectId">
-      <img :src="review.reviewer.image" /><br />
-      {{ review.reviewer.name }}<br />
-      {{ formatDate(review.date) }}<br />
-      <short-text :text="review.comment" :target="120" /><br />
-    </div>
-    <img :src="user.image" /><br />
-    {{ user.name }} <br />
-    {{ formatDate(user.joined) }} <br />
-    {{ user.reviewCount }} <br />
-    {{ user.description }} <br />
   </div>
 </template>
 
 <script>
 import ShortText from "../../components/ShortText.vue";
 import PropertyReviews from "../../components/PropertyReviews.vue";
+
 export default {
   components: { ShortText, PropertyReviews },
   head() {
     return {
       title: this.home.title,
     };
-  },
-  mounted() {
-    this.$maps.showMap(
-      this.$refs.map,
-      this.home._geoloc.lat,
-      this.home._geoloc.lng
-    );
   },
   // `asyncData` is Nuxt feature for async Data, it's come with so many things
   async asyncData({ params, $dataApi, error }) {
@@ -102,16 +72,6 @@ export default {
     //   reviews: reviewResponse.json.hits,
     //   user: userResponse.json.hits[0],
     // };
-  },
-  methods: {
-    formatDate(dateStr) {
-      const date = new Date(dateStr);
-      return date.toLocaleDateString(undefined, {
-        month: "long",
-        year: "numeric",
-        day: "2-digit",
-      });
-    },
   },
 };
 </script>

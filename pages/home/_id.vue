@@ -5,6 +5,7 @@
     <property-description :home="home" />
     <property-map :home="home" />
     <property-reviews :reviews="reviews" />
+    <property-host :user="user" />
 
     {{ home.title }} <br />
     <img src="/images/marker.svg" width="20" height="20" />{{

@@ -20,11 +20,30 @@ export default {
   plugins: ["~/plugins/maps.client", "~/plugins/dataApi"],
   modules: [],
   buildModules: ["@nuxtjs/tailwindcss"],
-  css: ["~/assets/sass/app.scss"],
+  css: ["@/assets/css/main.scss"],
   build: {
-    extractCSS: true,
+    // sass: {
+    //   implementation: require("sass"),
+    // },
+    // scss: {
+    //   implementation: require("sass"),
+    // },
+    transpile: ["vee-validate"],
+    postcss: {
+      plugins: {
+        "postcss-custom-properties": false,
+      },
+    },
+    // extractCSS: true,
     loaders: {
-      limit: 0, // stop inLine or stop base64 hash for image
+      limit: 0,
+    },
+  },
+  publicRuntimeConfig: {
+    auth: {
+      cookieName: "idToken",
+      clientId:
+        "261771873987-d63fk0jh603nt8mi7sq7359kh1u0t2du.apps.googleusercontent.com",
     },
   },
 };

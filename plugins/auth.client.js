@@ -1,6 +1,6 @@
 import Cookie from "js-cookie";
 
-export default ({ $config }) => {
+export default ({ $config, store }, inject) => {
   window.initAuth = init;
   addScript();
   inject("auth", {
@@ -31,8 +31,15 @@ export default ({ $config }) => {
   function parseUser(user) {
     if (!user.isSignedIn()) {
       Cookie.remove($config.auth.cookieName);
+      store.commit("auth/user", null);
       return;
     }
+
+    store.commit("auth/user", {
+      fullName: user.name,
+      profileUrl: user.image,
+    });
+
     const idToken = user.getAuthResponse().id_token;
     Cookie.set($config.auth.cookieName, idToken, {
       expires: 1 / 24,

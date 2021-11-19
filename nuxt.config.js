@@ -17,7 +17,11 @@ export default {
   router: {
     prefetchLinks: false,
   },
-  plugins: ["~/plugins/maps.client", "~/plugins/dataApi"],
+  plugins: [
+    "~/plugins/maps.client",
+    "~/plugins/dataApi",
+    "~/plugins/auth.client",
+  ],
   modules: [],
   buildModules: ["@nuxtjs/tailwindcss"],
   css: ["@/assets/css/main.scss"],

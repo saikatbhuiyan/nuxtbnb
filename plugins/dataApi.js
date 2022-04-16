@@ -36,7 +36,7 @@ export default function(context, inject) {
             body: JSON.stringify({
               filters: `homeId:${homeId}`,
               hitsPerPage: 6,
-              attributesToHighlight: [] // removed unused attributes
+              attributesToHighlight: [], // removed unused attributes
             }),
           }
         )
@@ -49,17 +49,14 @@ export default function(context, inject) {
   async function getUserByHomeId(homeId) {
     try {
       return unWrap(
-        await fetch(
-          `https://${appId}-dsn.algolia.net/1/indexes/users/query`,
-          {
-            headers,
-            method: "POST",
-            body: JSON.stringify({
-              filters: `homeId:${homeId}`,
-              attributesToHighlight: [] // removed unused attributes
-            }),
-          }
-        )
+        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/users/query`, {
+          headers,
+          method: "POST",
+          body: JSON.stringify({
+            filters: `homeId:${homeId}`,
+            attributesToHighlight: [], // removed unused attributes
+          }),
+        })
       );
     } catch (error) {
       return getErrorResponse(error);
@@ -69,19 +66,16 @@ export default function(context, inject) {
   async function getHomeByLocation(lat, lng, radiusInMeters = 1500) {
     try {
       return unWrap(
-        await fetch(
-          `https://${appId}-dsn.algolia.net/1/indexes/homes/query`,
-          {
-            headers,
-            method: "POST",
-            body: JSON.stringify({
-              aroundLatLng: `${lat},${lng}`,
-              aroundRadius: radiusInMeters,
-              hitsPerPage: 10,
-              attributesToHighlight: []
-            }),
-          }
-        )
+        await fetch(`https://${appId}-dsn.algolia.net/1/indexes/homes/query`, {
+          headers,
+          method: "POST",
+          body: JSON.stringify({
+            aroundLatLng: `${lat},${lng}`,
+            aroundRadius: radiusInMeters,
+            hitsPerPage: 10,
+            attributesToHighlight: [],
+          }),
+        })
       );
     } catch (error) {
       return getErrorResponse(error);

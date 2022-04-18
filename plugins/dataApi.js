@@ -1,6 +1,10 @@
 export default function(context, inject) {
-  const appId = "7OVHMCS6BJ";
-  const apiKey = "364d0203fb2bf42e8f496f6654964a14";
+  // const appId = "7OVHMCS6BJ";
+  // const apiKey = "364d0203fb2bf42e8f496f6654964a14";
+
+  const appId = "Q6IFH1VAUQ";
+  const apiKey = "929a498d223da96d79ee80fae0055203";
+
   const headers = {
     "X-Algolia-API-Key": apiKey,
     "X-Algolia-Application-Id": appId,

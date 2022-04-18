@@ -1,3 +1,5 @@
+import myServerMddleware from "./myServerMddleware";
+
 export default {
   components: true,
   head: {
@@ -56,4 +58,5 @@ export default {
         "261771873987-d63fk0jh603nt8mi7sq7359kh1u0t2du.apps.googleusercontent.com",
     },
   },
+  serverMiddleware: [myServerMddleware],
 };

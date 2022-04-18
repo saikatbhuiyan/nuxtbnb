@@ -24,25 +24,31 @@ export default {
   ],
   modules: [],
   buildModules: ["@nuxtjs/tailwindcss"],
-  css: ["@/assets/css/main.scss"],
+  css: ["~/assets/sass/app.scss"],
   build: {
-    // sass: {
-    //   implementation: require("sass"),
-    // },
-    // scss: {
-    //   implementation: require("sass"),
-    // },
-    transpile: ["vee-validate"],
-    postcss: {
-      plugins: {
-        "postcss-custom-properties": false,
-      },
-    },
-    // extractCSS: true,
+    extractCSS: true,
     loaders: {
       limit: 0,
     },
   },
+  // build: {
+  //   // sass: {
+  //   //   implementation: require("sass"),
+  //   // },
+  //   // scss: {
+  //   //   implementation: require("sass"),
+  //   // },
+  //   transpile: ["vee-validate"],
+  //   postcss: {
+  //     plugins: {
+  //       "postcss-custom-properties": false,
+  //     },
+  //   },
+  //   // extractCSS: true,
+  //   loaders: {
+  //     limit: 0,
+  //   },
+  // },
   publicRuntimeConfig: {
     auth: {
       cookieName: "idToken",

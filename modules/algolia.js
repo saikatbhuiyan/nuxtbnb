@@ -41,7 +41,7 @@ export default function() {
     }
   }
 
-  async function getUserById(userId) {
+  async function getUserById(identity) {
     try {
       return unWrap(
         await fetch(

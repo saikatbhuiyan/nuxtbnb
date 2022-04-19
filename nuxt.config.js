@@ -24,7 +24,7 @@ export default {
     "~/plugins/dataApi",
     "~/plugins/auth.client",
   ],
-  modules: [],
+  modules: ["~/modules/auth", "~/modules/algolia"],
   buildModules: ["@nuxtjs/tailwindcss"],
   css: ["~/assets/sass/app.scss"],
   build: {
@@ -57,6 +57,15 @@ export default {
       clientId:
         "261771873987-d63fk0jh603nt8mi7sq7359kh1u0t2du.apps.googleusercontent.com",
     },
+    algolia: {
+      appId: "Q6IFH1VAUQ",
+      key: "929a498d223da96d79ee80fae0055203",
+    },
   },
-  serverMiddleware: [myServerMddleware],
+  privateRuntimeConfig: {
+    algolia: {
+      appId: "QXGX8RCAML",
+      key: "739175c49753db77b422766b417678b1",
+    },
+  },
 };

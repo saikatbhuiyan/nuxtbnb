@@ -1,4 +1,5 @@
 import Cookie from "js-cookie";
+import { unWrap } from "~/utils/fetchUtils";
 
 export default ({ $config, store }, inject) => {
   window.initAuth = init;
@@ -28,7 +29,7 @@ export default ({ $config, store }, inject) => {
     });
   }
 
-  function parseUser(user) {
+  async function parseUser(user) {
     if (!user.isSignedIn()) {
       Cookie.remove($config.auth.cookieName);
       store.commit("auth/user", null);
@@ -45,6 +46,18 @@ export default ({ $config, store }, inject) => {
       expires: 1 / 24,
       sameSite: "Lax",
     });
+
+    try {
+      const response = await unWrap(await fetch("/api/user"));
+      const user = response.json;
+
+      store.commit("auth/user", {
+        fullName: user.name,
+        profileUrl: user.image,
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   function signOut() {

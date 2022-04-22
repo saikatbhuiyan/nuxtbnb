@@ -1,7 +1,9 @@
 {
   "name": "nuxtbnb",
   "dependencies": {
+    "@nuxtjs/cloudinary": "^1.0.3",
     "body-parser": "^1.20.0",
+    "cloudinary-vue": "1.1.2",
     "cookie": "^0.4.1",
     "google-auth-library": "^7.10.2",
     "js-cookie": "^3.0.1",

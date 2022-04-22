@@ -1,6 +1,11 @@
 <template>
   <div>
-    <img :src="home.images[0]" style="width: 300px" /><br />
+    <nuxt-img
+      :src="home.images[0]"
+      width="200"
+      height="150"
+      provider="cloudinary"
+    /><br />
     {{ home.title }}
     {{ home.location.address }} {{ home.location.city }} {{ home.location.state
     }}<br />
@@ -11,11 +16,11 @@
 
 <script>
 export default {
-    props: {
-        home: {
-            type: Object,
-            required: true,
-        }
-    }
-}
+  props: {
+    home: {
+      type: Object,
+      required: true,
+    },
+  },
+};
 </script>

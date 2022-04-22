@@ -2,7 +2,10 @@
   <div>
     <div>
       <span v-for="home in homeList" :key="home.objectID"
-        >{{ home.title }}: <button class="text-red-800">Delete</button><br />
+        >{{ home.title }}:
+        <button class="text-red-800" @click="deleteHome(home.objectID)">
+          Delete</button
+        ><br />
       </span>
     </div>
     <h2 class="text-xl bold">Add a Home</h2>
@@ -96,6 +99,14 @@ export default {
     this.setHomesList();
   },
   methods: {
+    async deleteHome(homeId) {
+      await fetch(`/api/homes/${homeId}`, {
+        method: "DELETE",
+      });
+      const index = this.homeList.findIndex((obj) => obj.objectID == homeId);
+      this.homeList.splice(index, 1);
+    },
+
     async setHomesList() {
       this.homeList = (await unWrap(await fetch("/api/homes/user/"))).json;
     },
@@ -130,12 +141,18 @@ export default {
     },
 
     async onSubmit() {
-      await fetch("/api/homes", {
-        method: "POST",
-        body: JSON.stringify(this.home),
-        headers: {
-          "Content-Type": "application/json",
-        },
+      const response = await unWrap(
+        await fetch("/api/homes", {
+          method: "POST",
+          body: JSON.stringify(this.home),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+      );
+      this.homeList.push({
+        title: this.home.title,
+        objectID: response.json.homeId,
       });
     },
   },

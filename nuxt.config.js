@@ -30,9 +30,14 @@ export default {
     "~/modules/cloudinary",
     "@nuxtjs/cloudinary",
   ],
-  buildModules: ["@nuxtjs/tailwindcss"],
+  buildModules: ["@nuxtjs/tailwindcss", "@nuxt/image"],
   cloudinary: {
     cloudName: "dzxztzdg4",
+  },
+  image: {
+    cloudinary: {
+      baseURL: "https://res.cloudinary.com/dzxztzdg4/image/upload/",
+    },
   },
   css: ["~/assets/sass/app.scss"],
   build: {

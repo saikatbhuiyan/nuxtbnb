@@ -23,6 +23,7 @@ export default {
     "~/plugins/maps.client",
     "~/plugins/dataApi",
     "~/plugins/auth.client",
+    "~/plugins/vCalendar.client",
   ],
   modules: [
     "~/modules/auth",

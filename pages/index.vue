@@ -26,7 +26,8 @@ export default {
       ],
     };
   },
-  data() {
+
+  async asyncData({ $dataApi }) {
     return {
       homes: (await $dataApi.getHomes()).json.hits,
     };

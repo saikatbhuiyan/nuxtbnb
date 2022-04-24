@@ -1,5 +1,3 @@
-import myServerMddleware from "./myServerMddleware";
-
 export default {
   components: true,
   head: {
